@@ -1,3 +1,5 @@
+import java.util.*;
+
 public class LeetCode {
 
     public static int romanToInt(String s) {
@@ -36,7 +38,7 @@ public class LeetCode {
                         } else if (Character.toUpperCase(s.charAt(i + 1)) == 'C') {
                             year += 90;
                             skip = true;
-                        }else {
+                        } else {
                             year += 10;
                         }
                     } else {
@@ -53,7 +55,7 @@ public class LeetCode {
                         } else if (Character.toUpperCase(s.charAt(i + 1)) == 'M') {
                             year += 900;
                             skip = true;
-                        }else {
+                        } else {
                             year += 100;
                         }
                     } else {
@@ -66,5 +68,39 @@ public class LeetCode {
         }
 
         return year;
+    }
+
+    public static String longestCommonPrefix(String[] strs) {
+        String longest = "";
+
+        if (strs.length == 1) return strs[0];
+
+        for (String str : strs) {
+            for (int j = 0; j <= str.length(); j++) {
+                String txt = str.substring(0, j);
+
+                boolean allMatch = Arrays.stream(strs).allMatch(p -> p.startsWith(txt));
+
+                if (allMatch) longest = txt;
+            }
+        }
+
+        return longest;
+    }
+
+    public static int[] twoSum(int[] nums, int target) {
+        int[] result = new int[2];
+
+        for (int i = 0; i < nums.length; i++) {
+            for (int j = i + 1; j < nums.length; j++) {
+                if (nums[i] + nums[j] == target) {
+                    result[0] = i;
+                    result[1] = j;
+                    return result;
+                }
+            }
+        }
+
+        return result;
     }
 }
