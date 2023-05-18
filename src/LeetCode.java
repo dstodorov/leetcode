@@ -103,4 +103,36 @@ public class LeetCode {
 
         return result;
     }
+
+    public static int lengthOfLongestSubstring(String s) {
+        int counter = 1;
+        TreeSet<Integer> nums = new TreeSet<>();
+        List<Character> symbols = new ArrayList<>();
+
+        for (int i = 0; i < s.length(); i++) {
+            if (i + 1 < s.length()) {
+                if (!symbols.contains(s.charAt(i + 1))) {
+                    if (s.charAt(i) != s.charAt(i + 1)) {
+                        counter++;
+                        symbols.add(s.charAt(i));
+                        nums.add(counter);
+                    } else {
+                        counter = 1;
+                        nums.add(counter);
+                    }
+                }
+            } else {
+                if (!symbols.contains(s.charAt(i))) {
+                    counter++;
+                    nums.add(counter);
+                } else {
+                    nums.add(counter);
+                }
+            }
+        }
+
+        if (nums.isEmpty()) return 0;
+
+        return nums.last();
+    }
 }
