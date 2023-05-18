@@ -12,6 +12,6 @@ public class Main {
 //        int[] result = LeetCode.twoSum(nums, target);
 //        System.out.printf("[%d,%d]%n", result[0], result[1]);
 
-        System.out.println(LeetCode.lengthOfLongestSubstring("bbbbb"));
+        System.out.println(LeetCode.isPalindrome(121));
     }
 }
