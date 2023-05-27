@@ -194,4 +194,29 @@ public class LeetCode {
 
         return dummy.next;
     }
+
+    public static int removeDuplicates(int[] nums) {
+
+        if (nums.length == 1) return 1;
+
+        if (nums.length == 2 && nums[0] == nums[1]) {
+            nums[1] = -1;
+            return 1;
+        }
+
+        int i = 0;
+        int j = 1;
+
+        while (j <= nums.length - 1) {
+
+            if (nums[i] == nums[j]) {
+                j++;
+            } else {
+                nums[i + 1] = nums[j];
+                i++;
+            }
+        }
+
+        return i + 1;
+    }
 }
