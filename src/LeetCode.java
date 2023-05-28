@@ -234,4 +234,41 @@ public class LeetCode {
         }
         return counter;
     }
+
+    public static int strStr(String haystack, String needle) {
+
+        if (haystack.length() < needle.length()) return -1;
+
+        for (int i = 0; i < haystack.length(); i++) {
+            int remaining = haystack.length() - i;
+            if (haystack.charAt(i) == needle.charAt(0)) {
+                if (remaining >= needle.length()) {
+                    String innerStr = haystack.substring(i, i + needle.length());
+                    if (innerStr.equals(needle)) return i;
+                } else {
+                    return -1;
+                }
+            }
+        }
+
+        return -1;
+    }
+
+    public static int searchInsert(int[] nums, int target) {
+        int bestIndex = 0;
+
+        if (nums.length > 0 && nums[0] > target) return bestIndex;
+        for (int i = 0; i < nums.length; i++) {
+
+            if (nums[i] == target) return i;
+
+            if (i == nums.length - 1 && nums[i] < target) return nums.length;
+
+            if (target > nums[i] && target < nums[i + 1]) {
+                bestIndex = i + 1;
+            }
+        }
+
+        return bestIndex;
+    }
 }
