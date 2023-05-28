@@ -219,4 +219,19 @@ public class LeetCode {
 
         return i + 1;
     }
+
+    public static int removeElement(int[] nums, int val) {
+        int pos = 0;
+        int counter = 0;
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] != val) {
+                nums[pos] = nums[i];
+                pos++;
+                counter++;
+            } else {
+                nums[i] = val - 1;
+            }
+        }
+        return counter;
+    }
 }
